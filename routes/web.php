@@ -1,4 +1,6 @@
 <?php
+
+use App\Http\Controllers\Admin\Products\ComputerController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\DashboardController;
@@ -33,6 +35,7 @@ Route::middleware([
         Route::prefix('admin')->group(function () {
             Route::name('admin.')->group(function () {
                 Route::get('/dashboard', Dashboard::class)->name('dashboard');
+                Route::resource('computer',ComputerController::class);
                 Route::get('/users', [UserController::class, 'index'])->name('users');
                 Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
                 Route::controller(MessageController::class)->group(function () {
@@ -45,7 +48,7 @@ Route::middleware([
         });
     });
 
-    
+
 
 });
 
